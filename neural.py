@@ -7,15 +7,16 @@ from stft import fft_morse
 from model_class import Morse_Decoder
 
 
-def morse_processing(msg, dev=0.5):
-    # dt - Число отсчётов. Время точки = dt / 48000
-    dt = 3000
+def morse_processing(msg, dict_params, dev=0.5):
+
+    # dt - Число отсчётов. Время точки = dt / fs
+    dt = dict_params['dt']
     # Частота
-    nu = 1000
+    nu = dict_params['nu']
     # Частота дискретизации
-    fs = 48000
-    step = 50
-    size = 960
+    fs = dict_params['fs']
+    step = dict_params['step']
+    size = dict_params['size']
 
     signal = morse_generator(msg, dt, nu, noise=True, dev=dev)
     signal = np.float32(signal / np.max(np.abs(signal)))
@@ -38,4 +39,11 @@ def morse_processing(msg, dev=0.5):
 
 if __name__ == '__main__':
     msg = 'Привет'
-    print(*morse_processing(msg, dev=0.5))
+    dict_params = {
+        'dt': 3000,
+        'nu': 1000,
+        'fs': 48000,
+        'step': 50,
+        'size': 960,
+    }
+    print(*morse_processing(msg, dict_params, dev=0.5))

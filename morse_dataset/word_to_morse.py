@@ -35,7 +35,7 @@ def encrypt(message):
     return cipher
 
 def encrypt_to_numpy(message, dt, nu, phase=1, fs=48000):
-    cipher = encrypt(message)
+    cipher = encrypt(message).strip()
     signal = []
     for chr in cipher:
         if chr == ' ' or chr == '/':

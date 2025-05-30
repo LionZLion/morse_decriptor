@@ -3,12 +3,12 @@ from scipy.signal.windows import hamming
 import numpy as np
 from scipy.io import wavfile
 
-def fft_morse(path, step=50, size=480, nu=1000, fs=48000):
+def fft_morse(path, step, size, nu, fs=48000):
     """_summary_
     Args:
         path (str): До сигнала в формате .wav или np.array.
-        step (int, optional): Шаг окна. Defaults to 50.
-        size (int, optional): Размер окна. Должен быть кратным 48 для миниммизации потерь.
+        step (int, optional): Шаг окна. 
+        size (int, optional): Размер окна. 
         nu (int, optional): Частотата Фурье.
         fs (int, optional): Частота дискретизации. Defaults to 48000.
 

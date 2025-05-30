@@ -40,7 +40,7 @@ def CTC_decoder(predict):
 
 if __name__ == '__main__':
     
-    message = 'АБВГ'
+    message = '7Б-'
     encoded_message = coding_char(message)
     print(f"Encoded: {encoded_message}")
     decoded_message = decoding_char(encoded_message)

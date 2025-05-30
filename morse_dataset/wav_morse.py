@@ -31,7 +31,7 @@ def wav_save(dt, nu, noise=True, dataset_path='./morse_dataset.csv', fs=48000):
 
     for idx, msg in tqdm(enumerate(train_df['message']), total=len(train_df)):
         # Добавление шума
-        noise_deviation = [1.0, 1.5, 2, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6]
+        noise_deviation = [0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5]
         dev = random.choice(noise_deviation)
         signal = morse_generator(msg, dt, nu, noise=noise, dev=dev)
         signal = np.float32(signal / np.max(np.abs(signal)))
